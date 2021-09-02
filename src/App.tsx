@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { AdminRoom } from "./pages/admin/AdminRoom";
+import { CreatePost } from "./pages/admin/create-post/CreatePost";
+import { Home } from "./pages/home/Home";
+import { Post } from "./pages/post/Post";
+import { PostList } from "./components/PostList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/admin" exact component={AdminRoom} />
+        <Route path="/admin/posts/create" component={CreatePost} />
+        <Route path="/posts" component={PostList} />
+        <Route path="/post/:id" component={Post} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
